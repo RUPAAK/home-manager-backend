@@ -10,14 +10,13 @@ it("should not throw 404 while calling signin endpoint", async () => {
 it("should throw 400 when email is missing", async () => {
   const res = await request(app)
     .post("/api/v1/auth/signin")
-    .send({ password: "kathmagjdh" });
-  // console.log(res.error);
+    .send({ password: "test" });
 });
 
 it("should throw 400 when password is missing", async () => {
   const res = await request(app)
     .post("/api/v1/auth/signin")
-    .send({ email: "kathmagjdh@gmail.com" })
+    .send({ email: "test@gmail.com" })
     .expect(400);
 });
 
@@ -32,16 +31,35 @@ it("should throw 400 when when when is not register", async () => {
   const res = await request(app)
     .post("/api/v1/auth/signin")
     .send({
-      email: "afdsfsdf@bcdv.com",
+      email: "test@bcdv.com",
       password: "kathmandu",
     })
     .expect(400);
 });
 
-it("fails when an incorrect password is supplied", async () => {});
+it("fails when an incorrect password is supplied", async () => {
+  await request(app).post("/api/v1/auth/signup").send({
+    name: "test",
+    email: "test@gmail.com",
+    password: "test"
+  }).expect(201)
+  await await request(app).post("/api/v1/auth/signin").send({
+    email: "test@gmail.com",
+    password: "testest"
+  }).expect(400)
+});
 
-it("responds with a access token when given valid credentials", async () => {});
+it("responds with a access token when given valid credentials", async () => {
+  await request(app).post("/api/v1/auth/signup").send({
+    name: "test",
+    email: "test@gmail.com",
+    password: "test"
+  }).expect(201)
+  const res= await await request(app).post("/api/v1/auth/signin").send({
+    email: "test@gmail.com",
+    password: "test"
+  })
 
-it("returns createdAt and updatedAt fields with successful login", async () => {});
+  expect(res.body.accessToken).toBeDefined()
+});
 
-it("should have lastLogged in field when new user login", async () => {});
