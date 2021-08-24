@@ -14,25 +14,12 @@ app.use(json());
 
 app.use(cors())
 
+app.get('/', async(req, res)=>{
+  res.send('Hello There')
+})
+
 app.use("/api/v1/auth", indexAuthRouter);
 
-app.all("/", async (req, res) => {
-  if (process.env.PORT === "4500") {
-    // Dev Environment
-    res.send({
-      message: "Backend Server is Working",
-      env: "Development",
-    });
-  }
-
-  if (process.env.PORT === "4444") {
-    // Prod Environment
-    res.send({
-      message: "Backend Server is Working",
-      env: "Production",
-    });
-  }
-});
 
 app.all("*", (req, res) => {
   throw new NotFoundError();
