@@ -63,3 +63,18 @@ it("responds with a access token when given valid credentials", async () => {
   expect(res.body.accessToken).toBeDefined()
 });
 
+
+it("should have lastLogged in field when new user login", async () => {
+  await request(app).post("/api/v1/auth/signup").send({
+    name: "test",
+    email: "test@gmail.com",
+    password: "test"
+  }).expect(201)
+
+  const res= await await request(app).post("/api/v1/auth/signin").send({
+    email: "test@gmail.com",
+    password: "test"
+  })
+
+  expect(res.body.data.lastLoggedIn).toBeDefined()
+});

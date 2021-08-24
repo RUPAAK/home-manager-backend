@@ -30,6 +30,8 @@ const signin = async (req: Request, res: Response) => {
     process.env.JWT_KEY!
   );
 
+  existingUser.lastLoggedIn= new Date()
+
   const savedUser = await existingUser.save();
 
   res.status(200).send({

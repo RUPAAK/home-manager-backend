@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="16" failures="0" errors="0" time="20.029">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-08-24T15:20:11" time="18.616" tests="8">
+    <testcase classname=" should not throw 404 when hitting signup endpoint" name=" should not throw 404 when hitting signup endpoint" time="0.242">
+    </testcase>
+    <testcase classname=" should throw 400 status when name is empty" name=" should throw 400 status when name is empty" time="0.05">
+    </testcase>
+    <testcase classname=" should throw 400 status when email is empty" name=" should throw 400 status when email is empty" time="0.033">
+    </testcase>
+    <testcase classname=" should throw 400 status when email is invalid" name=" should throw 400 status when email is invalid" time="0.021">
+    </testcase>
+    <testcase classname=" should throw 400 status when password is empty" name=" should throw 400 status when password is empty" time="0.032">
+    </testcase>
+    <testcase classname=" should throw 400 status when email is already taken" name=" should throw 400 status when email is already taken" time="0.22">
+    </testcase>
+    <testcase classname=" password should be hashed when signup" name=" password should be hashed when signup" time="0.175">
+    </testcase>
+    <testcase classname=" should throw 201 status when  user created succesfully" name=" should throw 201 status when  user created succesfully" time="0.099">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-08-24T15:20:11" time="18.652" tests="8">
+    <testcase classname=" should not throw 404 while calling signin endpoint" name=" should not throw 404 while calling signin endpoint" time="0.218">
+    </testcase>
+    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.018">
+    </testcase>
+    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.035">
+    </testcase>
+    <testcase classname=" should throw 400 when email and password are missing" name=" should throw 400 when email and password are missing" time="0.008">
+    </testcase>
+    <testcase classname=" should throw 400 when when when is not register" name=" should throw 400 when when when is not register" time="0.023">
+    </testcase>
+    <testcase classname=" fails when an incorrect password is supplied" name=" fails when an incorrect password is supplied" time="0.212">
+    </testcase>
+    <testcase classname=" responds with a access token when given valid credentials" name=" responds with a access token when given valid credentials" time="0.193">
+    </testcase>
+    <testcase classname=" should have lastLogged in field when new user login" name=" should have lastLogged in field when new user login" time="0.197">
+    </testcase>
+  </testsuite>
+</testsuites>

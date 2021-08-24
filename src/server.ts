@@ -12,14 +12,10 @@ dotenv.config();
 
 const server = require("http").createServer(app);
 
-const DB = process.env.DATABASE!.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD || "medprepnepal2O2O"
-);
+const DB= process.env.MONGO_URL!
 
 mongoose
   .connect(DB, {
-    authSource: "admin",
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -27,37 +23,9 @@ mongoose
   })
   .then(() => console.log("CONNECTION TO DATABASE SUCCESSFUL"));
 
-const port = process.env.PORT || 9261;
+const port = process.env.PORT || 5000;
 
 server.listen(port, () => {
   console.log(`App is Listening on Port ${port}`);
 });
 
-mongoose.connection.on("disconnected", () => {
-  console.log("Mongoose connection is disconnected.");
-});
-
-process.on("SIGINT", async () => {
-  await mongoose.connection.close();
-  process.exit(0);
-});
-
-type RejectionError = {
-  name: string;
-  message: string;
-};
-
-process.on("unhandledRejection", (err: RejectionError) => {
-  console.log(err.name, err.message);
-  console.log("UNHANDLED REJECTION! Sutting down.....");
-  server.close(() => {
-    process.exit(1);
-  });
-});
-
-process.on("SIGTERM", () => {
-  console.log("SIGTERM RECEIVED. Sutting Down gracefully");
-  server.close(() => {
-    console.log("Process terminated!");
-  });
-});

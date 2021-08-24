@@ -23,6 +23,7 @@ interface UserDoc extends mongoose.Document, UserAttrs {
   email: string;
   password: string;
   role: Role;
+  lastLoggedIn: Date,
   createdAt: Date;
   updatedAt: Date;
 }
@@ -51,6 +52,9 @@ const userSchema = new mongoose.Schema<UserDoc>(
       ],
       default: Role.User,
     },
+    lastLoggedIn:{
+      type: Date
+    }
   },
   {
     toJSON: {
