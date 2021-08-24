@@ -7,8 +7,9 @@
     "start": "node build/index.js",
     "watchtest": "jest --watchAll",
     "coverage": "jest --collect-coverage",
-    "test": "jest --ci",
-    "tsc": "tsc -p tsconfig.json"
+    "postinstall": "npm run build-ts",
+    "build-ts": "tsc -p tsconfig.json",
+    "test": "jest --ci"
   },
   "keywords": [],
   "author": "",
