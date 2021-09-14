@@ -6,6 +6,7 @@ import { json } from "body-parser";
 
 import { indexAuthRouter } from "./routes/v1/auth";
 import { errorHandler, NotFoundError } from "./common";
+import { indexExpenseRouter } from "./routes/v1/expense";
 ;
 
 const app = express();
@@ -19,6 +20,7 @@ app.get('/', async(req, res)=>{
 })
 
 app.use("/api/v1/auth", indexAuthRouter);
+app.use("/api/v1/expense", indexExpenseRouter)
 
 
 app.all("*", (req, res) => {
