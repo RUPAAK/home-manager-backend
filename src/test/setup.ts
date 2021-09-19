@@ -16,7 +16,7 @@ declare global {
 
 // jest.mock("../services/facebook.ts");
 
-jest.setTimeout(30000);
+jest.setTimeout(100000);
 
 let mongo: any;
 beforeAll(async () => {
@@ -49,7 +49,7 @@ afterAll(async () => {
 global.signin = async () => {
   const email = "test@test.com";
   const password = "password";
-  const name = "Bikram Aryal";
+  const name = "test test";
 
   // Create a Super admin acc
 
@@ -72,7 +72,7 @@ global.signin = async () => {
 global.signinAdmin = async () => {
   const email = "test1@test.com";
   const password = "password";
-  const name = "Bikram Aryal";
+  const name = "test test";
 
   const response = await request(app)
     .post("/api/v1/auth/signup")

@@ -20,7 +20,7 @@ app.get('/', async(req, res)=>{
 })
 
 app.use("/api/v1/auth", indexAuthRouter);
-app.use("/api/v1/expense", indexExpenseRouter)
+app.use("/api/v1/expenses", indexExpenseRouter)
 
 
 app.all("*", (req, res) => {

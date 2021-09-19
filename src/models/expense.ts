@@ -1,13 +1,14 @@
 import crypto from "crypto";
 import mongoose from "mongoose";
-import {Role } from "../common/types/auth_types";
+import { Role } from "../common/types/auth_types";
 
 // An interface that describes the properties
 // that are requried to create a new User
 interface ExpenseAttrs {
-  title: string;
+  name: string;
   amount: number;
-  date?: Date;
+  date?: string;
+  user: string,
 }
 
 // An interface that describes the properties
@@ -17,16 +18,17 @@ interface ExpenseModel extends mongoose.Model<ExpenseDoc> {
 }
 
 interface ExpenseDoc extends mongoose.Document, ExpenseAttrs {
-    title: string;
-    amount: number;
-    date: Date;
+  name: string;
+  amount: number;
+  date: string;
+  user: string,
   createdAt: Date;
   updatedAt: Date;
 }
 
 const expenseSchema = new mongoose.Schema<ExpenseDoc>(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -35,9 +37,14 @@ const expenseSchema = new mongoose.Schema<ExpenseDoc>(
       required: true,
     },
     date: {
-      type: Date,
-      default: Date.now()
+      type: String,
+      required: true,
     },
+    user:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     toJSON: {
@@ -51,12 +58,15 @@ const expenseSchema = new mongoose.Schema<ExpenseDoc>(
   }
 );
 
+expenseSchema.index({ name: "text" });
 
 expenseSchema.statics.build = (attrs: ExpenseAttrs) => {
   return new Expense(attrs);
 };
 
-
-const Expense = mongoose.model<ExpenseDoc, ExpenseModel>("Expense", expenseSchema);
+const Expense = mongoose.model<ExpenseDoc, ExpenseModel>(
+  "Expense",
+  expenseSchema
+);
 
 export { Expense };
