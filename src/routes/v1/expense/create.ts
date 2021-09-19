@@ -8,6 +8,7 @@ const router= express.Router()
 router.post('/', currentUser, requireAuth, [
     body("name").notEmpty().withMessage("Expense title must be provided"),
     body("amount").notEmpty().withMessage("Amount must be valid"),
+    body("date").notEmpty().withMessage("Date must be valid"),
 ] ,validateRequest, addExpenseHandler)
 
 export {router as addExpenseRouter}
