@@ -5,9 +5,10 @@ import { Role } from "../common/types/auth_types";
 // An interface that describes the properties
 // that are requried to create a new User
 interface ExpenseAttrs {
-  title: string;
+  name: string;
   amount: number;
   date?: string;
+  user: string,
 }
 
 // An interface that describes the properties
@@ -17,16 +18,17 @@ interface ExpenseModel extends mongoose.Model<ExpenseDoc> {
 }
 
 interface ExpenseDoc extends mongoose.Document, ExpenseAttrs {
-  title: string;
+  name: string;
   amount: number;
   date: string;
+  user: string,
   createdAt: Date;
   updatedAt: Date;
 }
 
 const expenseSchema = new mongoose.Schema<ExpenseDoc>(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -38,6 +40,11 @@ const expenseSchema = new mongoose.Schema<ExpenseDoc>(
       type: String,
       required: true,
     },
+    user:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     toJSON: {
@@ -50,6 +57,8 @@ const expenseSchema = new mongoose.Schema<ExpenseDoc>(
     timestamps: true,
   }
 );
+
+expenseSchema.index({ name: "text" });
 
 expenseSchema.statics.build = (attrs: ExpenseAttrs) => {
   return new Expense(attrs);
