@@ -3,12 +3,12 @@ import { app } from "../../../../app";
 import "../../../../test/setup";
 
 it("should not throw 404 while calling get endpoint", async () => {
-    const res = await request(app).patch("/api/v1/expenses/randomid").send({});
+    const res = await request(app).patch("/api/v1/expenses/4edd40c86762e0fb12000003").send({});
     expect(res.status).not.toEqual(404);
 });
 
 it("should throw 401 if token not given", async () => {    
-    const res= await request(app).patch("/api/v1/expenses/randomid")
+    const res= await request(app).patch("/api/v1/expenses/4edd40c86762e0fb12000003")
         .set({
             Authorization: `Bearer token`
         })
@@ -17,7 +17,7 @@ it("should throw 401 if token not given", async () => {
 
 it("should throw 400 if expense not found", async () => {   
     const token= await global.signin() 
-    const res= await request(app).patch("/api/v1/expenses/randomid")
+    const res= await request(app).patch("/api/v1/expenses/4edd40c86762e0fb12000003")
         .set({
             Authorization: `Bearer ${token}`
         })
