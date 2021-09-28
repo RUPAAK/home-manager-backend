@@ -86,7 +86,7 @@ it("shouldthrow 201 if data created successfull", async () => {
 it("should throw 201 and should have data if data created successfull", async () => {
     const token= await global.signin()
 
-    const res= await request(app).post("/api/v1/expenses")
+    const res= await request(app).post("/api/v1/banks")
     .set({
         Authorization: `Bearer ${token}`
     })
