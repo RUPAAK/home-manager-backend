@@ -1,85 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="35" failures="0" errors="0" time="12.14">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-09-26T16:15:13" time="8.544" tests="8">
-    <testcase classname=" should not throw 404 while calling signin endpoint" name=" should not throw 404 while calling signin endpoint" time="0.052">
+<testsuites name="jest tests" tests="58" failures="0" errors="0" time="12.72">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:27" time="7.503" tests="4">
+    <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.057">
     </testcase>
-    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.014">
+    <testcase classname=" should throw 401 if token not given" name=" should throw 401 if token not given" time="0.026">
     </testcase>
-    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.03">
+    <testcase classname=" should not throw 400 not found if expense of that id isnot found" name=" should not throw 400 not found if expense of that id isnot found" time="0.139">
     </testcase>
-    <testcase classname=" should throw 400 when email and password are missing" name=" should throw 400 when email and password are missing" time="0.008">
-    </testcase>
-    <testcase classname=" should throw 400 when when when is not register" name=" should throw 400 when when when is not register" time="0.014">
-    </testcase>
-    <testcase classname=" fails when an incorrect password is supplied" name=" fails when an incorrect password is supplied" time="0.19">
-    </testcase>
-    <testcase classname=" responds with a access token when given valid credentials" name=" responds with a access token when given valid credentials" time="0.204">
-    </testcase>
-    <testcase classname=" should have lastLogged in field when new user login" name=" should have lastLogged in field when new user login" time="0.244">
+    <testcase classname=" should not throw null if successful deleted" name=" should not throw null if successful deleted" time="0.099">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-09-26T16:15:13" time="8.567" tests="4">
-    <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.047">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:27" time="7.997" tests="8">
+    <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.06">
     </testcase>
-    <testcase classname=" should throw 401 if token not given" name=" should throw 401 if token not given" time="0.02">
+    <testcase classname=" should throw 401 error if token isnot provided" name=" should throw 401 error if token isnot provided" time="0.018">
     </testcase>
-    <testcase classname=" should not throw 400 not found if expense of that id isnot found" name=" should not throw 400 not found if expense of that id isnot found" time="0.191">
+    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.009">
     </testcase>
-    <testcase classname=" should not throw null if successful deleted" name=" should not throw null if successful deleted" time="0.171">
+    <testcase classname=" should throw 400 error if name isnot provided" name=" should throw 400 error if name isnot provided" time="0.152">
     </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-09-26T16:15:21" time="1.517" tests="4">
-    <testcase classname=" should not throw 404 while calling get endpoint" name=" should not throw 404 while calling get endpoint" time="0.083">
+    <testcase classname=" should throw 400 error if amount isnot provided" name=" should throw 400 error if amount isnot provided" time="0.106">
     </testcase>
-    <testcase classname=" should throw 401 if token not given" name=" should throw 401 if token not given" time="0.02">
+    <testcase classname=" should throw 400 error if date is absent" name=" should throw 400 error if date is absent" time="0.116">
     </testcase>
-    <testcase classname=" should throw 400 if expense not found" name=" should throw 400 if expense not found" time="0.135">
+    <testcase classname=" shouldthrow 201 if data created successfull" name=" shouldthrow 201 if data created successfull" time="0.13">
     </testcase>
-    <testcase classname=" should throw 200 and successfully update expense" name=" should throw 200 and successfully update expense" time="0.213">
+    <testcase classname=" should throw 201 and should have data if data created successfull" name=" should throw 201 and should have data if data created successfull" time="0.13">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-09-26T16:15:21" time="1.885" tests="8">
-    <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.069">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:35" time="1.708" tests="11">
+    <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.036">
     </testcase>
-    <testcase classname=" should throw 401 error if token isnot provided" name=" should throw 401 error if token isnot provided" time="0.016">
+    <testcase classname=" should throw 401 error if token isnot provided" name=" should throw 401 error if token isnot provided" time="0.045">
     </testcase>
-    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.006">
+    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.015">
     </testcase>
-    <testcase classname=" should throw 400 error if title isnot provided" name=" should throw 400 error if title isnot provided" time="0.176">
+    <testcase classname=" should throw 400 error if name isnot provided" name=" should throw 400 error if name isnot provided" time="0.14">
     </testcase>
-    <testcase classname=" should throw 400 error if amount isnot provided" name=" should throw 400 error if amount isnot provided" time="0.176">
+    <testcase classname=" should throw 400 error if amount isnot provided" name=" should throw 400 error if amount isnot provided" time="0.113">
     </testcase>
-    <testcase classname=" should throw 400 error if date is absent" name=" should throw 400 error if date is absent" time="0.099">
+    <testcase classname=" should throw 400 error if date isnot provided" name=" should throw 400 error if date isnot provided" time="0.13">
     </testcase>
-    <testcase classname=" shouldthrow 201 if data created successfull" name=" shouldthrow 201 if data created successfull" time="0.107">
+    <testcase classname=" should throw 400 error if bankid isnot provided" name=" should throw 400 error if bankid isnot provided" time="0.114">
     </testcase>
-    <testcase classname=" should throw 201 and should have data if data created successfull" name=" should throw 201 and should have data if data created successfull" time="0.106">
+    <testcase classname=" should throw 400 error if bank isnot found" name=" should throw 400 error if bank isnot found" time="0.092">
     </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-09-26T16:15:23" time="0.835" tests="3">
-    <testcase classname=" should not throw 404 while calling get endpoint" name=" should not throw 404 while calling get endpoint" time="0.017">
+    <testcase classname=" should throw if bank amount is less than transistion" name=" should throw if bank amount is less than transistion" time="0.118">
     </testcase>
-    <testcase classname=" should not throw 401 not authorized if token invalid" name=" should not throw 401 not authorized if token invalid" time="0.01">
+    <testcase classname=" should deduct amount from bank afet sucessful transistion creation" name=" should deduct amount from bank afet sucessful transistion creation" time="0.093">
     </testcase>
-    <testcase classname=" should not throw data while calling get endpoint" name=" should not throw data while calling get endpoint" time="0.13">
+    <testcase classname=" should sucessfully create transision  " name=" should sucessfully create transision  " time="0.09">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-09-26T16:15:23" time="1.172" tests="8">
-    <testcase classname=" should not throw 404 when hitting signup endpoint" name=" should not throw 404 when hitting signup endpoint" time="0.062">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:35" time="1.561" tests="4">
+    <testcase classname=" should not throw 404 while calling get endpoint" name=" should not throw 404 while calling get endpoint" time="0.027">
     </testcase>
-    <testcase classname=" should throw 400 status when name is empty" name=" should throw 400 status when name is empty" time="0.035">
+    <testcase classname=" should not throw 401 not authorized if token invalid" name=" should not throw 401 not authorized if token invalid" time="0.016">
     </testcase>
-    <testcase classname=" should throw 400 status when email is empty" name=" should throw 400 status when email is empty" time="0.016">
+    <testcase classname=" should throw data while calling get endpoint" name=" should throw data while calling get endpoint" time="0.137">
     </testcase>
-    <testcase classname=" should throw 400 status when email is invalid" name=" should throw 400 status when email is invalid" time="0.009">
+    <testcase classname=" should throw data only of the user" name=" should throw data only of the user" time="0.133">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:36" time="1.242" tests="8">
+    <testcase classname=" should not throw 404 while calling signin endpoint" name=" should not throw 404 while calling signin endpoint" time="0.017">
+    </testcase>
+    <testcase classname=" should throw 401 error if token isnot provided" name=" should throw 401 error if token isnot provided" time="0.018">
+    </testcase>
+    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.013">
+    </testcase>
+    <testcase classname=" should throw 400 error if name isnot provided" name=" should throw 400 error if name isnot provided" time="0.135">
+    </testcase>
+    <testcase classname=" should throw 400 error if amount isnot provided" name=" should throw 400 error if amount isnot provided" time="0.105">
+    </testcase>
+    <testcase classname=" should throw 400 error if date is absent" name=" should throw 400 error if date is absent" time="0.102">
+    </testcase>
+    <testcase classname=" shouldthrow 201 if data created successfull" name=" shouldthrow 201 if data created successfull" time="0.098">
+    </testcase>
+    <testcase classname=" should throw 201 and should have data if data created successfull" name=" should throw 201 and should have data if data created successfull" time="0.1">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:37" time="1.187" tests="8">
+    <testcase classname=" should not throw 404 while calling signin endpoint" name=" should not throw 404 while calling signin endpoint" time="0.026">
+    </testcase>
+    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.012">
+    </testcase>
+    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.016">
+    </testcase>
+    <testcase classname=" should throw 400 when email and password are missing" name=" should throw 400 when email and password are missing" time="0.013">
+    </testcase>
+    <testcase classname=" should throw 400 when when when is not register" name=" should throw 400 when when when is not register" time="0.018">
+    </testcase>
+    <testcase classname=" fails when an incorrect password is supplied" name=" fails when an incorrect password is supplied" time="0.169">
+    </testcase>
+    <testcase classname=" responds with a access token when given valid credentials" name=" responds with a access token when given valid credentials" time="0.207">
+    </testcase>
+    <testcase classname=" should have lastLogged in field when new user login" name=" should have lastLogged in field when new user login" time="0.202">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:38" time="1.01" tests="8">
+    <testcase classname=" should not throw 404 when hitting signup endpoint" name=" should not throw 404 when hitting signup endpoint" time="0.026">
+    </testcase>
+    <testcase classname=" should throw 400 status when name is empty" name=" should throw 400 status when name is empty" time="0.015">
+    </testcase>
+    <testcase classname=" should throw 400 status when email is empty" name=" should throw 400 status when email is empty" time="0.008">
+    </testcase>
+    <testcase classname=" should throw 400 status when email is invalid" name=" should throw 400 status when email is invalid" time="0.01">
     </testcase>
     <testcase classname=" should throw 400 status when password is empty" name=" should throw 400 status when password is empty" time="0.007">
     </testcase>
-    <testcase classname=" should throw 400 status when email is already taken" name=" should throw 400 status when email is already taken" time="0.085">
+    <testcase classname=" should throw 400 status when email is already taken" name=" should throw 400 status when email is already taken" time="0.089">
     </testcase>
-    <testcase classname=" password should be hashed when signup" name=" password should be hashed when signup" time="0.076">
+    <testcase classname=" password should be hashed when signup" name=" password should be hashed when signup" time="0.094">
     </testcase>
-    <testcase classname=" should throw 201 status when  user created succesfully" name=" should throw 201 status when  user created succesfully" time="0.077">
+    <testcase classname=" should throw 201 status when  user created succesfully" name=" should throw 201 status when  user created succesfully" time="0.106">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:38" time="0.863" tests="4">
+    <testcase classname=" should not throw 404 while calling get endpoint" name=" should not throw 404 while calling get endpoint" time="0.033">
+    </testcase>
+    <testcase classname=" should throw 401 if token not given" name=" should throw 401 if token not given" time="0.013">
+    </testcase>
+    <testcase classname=" should throw 400 if expense not found" name=" should throw 400 if expense not found" time="0.126">
+    </testcase>
+    <testcase classname=" should throw 200 and successfully update expense" name=" should throw 200 and successfully update expense" time="0.137">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-01T16:33:39" time="0.688" tests="3">
+    <testcase classname=" should not throw 404 while calling get endpoint" name=" should not throw 404 while calling get endpoint" time="0.036">
+    </testcase>
+    <testcase classname=" should not throw 401 not authorized if token invalid" name=" should not throw 401 not authorized if token invalid" time="0.012">
+    </testcase>
+    <testcase classname=" should throw data while calling get endpoint" name=" should throw data while calling get endpoint" time="0.096">
     </testcase>
   </testsuite>
 </testsuites>
