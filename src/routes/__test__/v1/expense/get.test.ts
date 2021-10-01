@@ -15,7 +15,7 @@ it("should not throw 401 not authorized if token invalid", async () => {
     .expect(401)
 });
 
-it("should not throw data while calling get endpoint", async () => {
+it("should throw data while calling get endpoint", async () => {
     const token= await global.signin()
     
     const res= await request(app).get("/api/v1/expenses")
