@@ -98,6 +98,3 @@ it("should throw 201 and should have data if data created successfull", async ()
     .expect(201)
     expect(res.body.data).toBeDefined()
 });
-
-
-

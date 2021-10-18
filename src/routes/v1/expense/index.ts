@@ -12,10 +12,7 @@ router.use(addExpenseRouter)
 router.use(getExpensesRouter)
 router.use(updateExpenseRouter)
 router.use(deleteExpenseRouter)
-<<<<<<< HEAD
-=======
 router.use(getUserExpenseRouter)
->>>>>>> 224d15bcfeb18c8886d96f9b5d05c430d4a7912e
 
 router.use(errorHandler);
 
