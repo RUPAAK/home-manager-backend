@@ -17,7 +17,7 @@ it('should throw 400 status when name is empty', async()=>{
 
 it('should throw 400 status when email is empty', async()=>{
     await request(app).post("/api/v1/auth/signup").send({
-        name: "teet",
+        name: "test",
         password: "test"
     }).expect(400)
 })
