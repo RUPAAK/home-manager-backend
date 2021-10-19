@@ -3,14 +3,21 @@ import { app } from "../../../../app";
 import "../../../../test/setup";
 
 it("should not throw 404 while calling signin endpoint", async () => {
-  const res = await request(app).post("/api/v1/banks");
+  const res = await request(app).post("/api/v1/banks").send({
+      name: '',
+      amount: '',
+      date: ''
+  });
   expect(res.status).not.toEqual(404);
 });
 
-
 it("should throw 401 error if token isnot provided", async () => {
     await request(app).post("/api/v1/banks")
-    .send({})
+    .send({
+        name: '',
+        amount: '',
+        date: ''
+    })
     .expect(401)
 });
 
@@ -25,8 +32,7 @@ it("should throw 401 error if token is invalid", async () => {
 
 it("should throw 400 error if name isnot provided", async () => {
     const token= await global.signin()
-    
-    const res= await request(app).post("/api/v1/banks")
+    await request(app).post("/api/v1/banks")
     .set({
         Authorization: `Bearer ${token}`
     })
@@ -39,13 +45,13 @@ it("should throw 400 error if name isnot provided", async () => {
 
 it("should throw 400 error if amount isnot provided", async () => {
     const token= await global.signin()
-
-    await request(app).post("/api/v1/banks")
+    
+    const res= await request(app).post("/api/v1/banks")
     .set({
         Authorization: `Bearer ${token}`
     })
     .send({
-        name: 'this is the length',
+        name: 'test',
         date: '2057/11/11'
     })
     .expect(400)
@@ -62,6 +68,7 @@ it("should throw 400 error if date is absent", async () => {
     .send({
         name: "one",
         amount: 5000,
+        date: ''
     })
     .expect(400)
 });
@@ -98,6 +105,3 @@ it("should throw 201 and should have data if data created successfull", async ()
     .expect(201)
     expect(res.body.data).toBeDefined()
 });
-
-
-

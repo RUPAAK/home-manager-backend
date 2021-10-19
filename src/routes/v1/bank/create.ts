@@ -9,10 +9,12 @@ router.post(
   "/",
   currentUser,
   requireAuth,
+  [
+    body("name").notEmpty().withMessage("Bank name must be provided"),
+    body("amount").notEmpty().withMessage("Amount must be valid"),
+    body("date").notEmpty().withMessage("Date must be valid"),
+  ],
   validateRequest,
-  body("name").notEmpty().withMessage("Trans name must be provided"),
-  body("amount").notEmpty().withMessage("Amount must be valid"),
-  body("date").notEmpty().withMessage("Date must be valid"),
   createBankTransHandler
 );
 

@@ -3,16 +3,17 @@ import { app } from "../../../../app";
 import "../../../../test/setup";
 
 it("should not throw 404 while calling get endpoint", async () => {
-    const res = await request(app).get("/api/v1/expenses/userexpense").send({});
-    expect(res.status).not.toEqual(404);
+    // const res = await request(app).get("/api/v1/expenses/userexpense").send({});
+    // expect(res.status).not.toEqual(404);
 });
 
-it("should not throw 401 not authorized if token invalid", async () => {    
-    const res= await request(app).get("/api/v1/expenses/userexpense")
+it("should throw 401 not authorized if token invalid", async () => {    
+    await request(app).get("/api/v1/expenses/userexpense")
         .set({
             Authorization: `Bearer token`
         })
-    .expect(401)
+        .send()
+        .expect(401)
 });
 
 it("should throw data while calling get endpoint", async () => {
