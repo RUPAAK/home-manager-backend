@@ -31,9 +31,10 @@ it("should throw 400 error if name isnot provided", async () => {
       Authorization: `Bearer ${token}`,
     })
     .send({
+      name: '',
       amount: 5000,
       date: "2057/11/11",
-      bank: "jfds4fsa8f4ds5dasf45",
+      bank: "4edd40c86762e0fb12000003",
     })
     .expect(400);
 });
@@ -49,7 +50,7 @@ it("should throw 400 error if amount isnot provided", async () => {
     .send({
       name: "Spend this money on shopping",
       date: "2057/11/11",
-      bank: "jfds4fsa8f4ds5dasf45",
+      bank: "4edd40c86762e0fb12000003",
     })
     .expect(400);
 });
@@ -65,7 +66,7 @@ it("should throw 400 error if date isnot provided", async () => {
     .send({
       name: "Spend this money on shopping",
       amount: 5000,
-      bank: "jfds4fsa8f4ds5dasf45",
+      bank: "4edd40c86762e0fb12000003",
     })
     .expect(400);
 });
@@ -81,7 +82,7 @@ it("should throw 400 error if bankid isnot provided", async () => {
     .send({
       name: "Spend this money on shopping",
       amount: 5000,
-      bank: "jfds4fsa8f4ds5dasf45",
+      bank: "4edd40c86762e0fb12000003",
     })
     .expect(400);
 });
@@ -98,7 +99,7 @@ it("should throw 400 error if bank isnot found", async () => {
       name: "Spend this money on shopping",
       amount: 5000,
       date: "2057/11/11",
-      bank: "jfds4fsa8f4dfds5dasf45",
+      bank: "4edd40c86762e0fb12000003",
     })
     .expect(400);
 });

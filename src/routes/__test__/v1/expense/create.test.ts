@@ -30,6 +30,7 @@ it("should throw 400 error if name isnot provided", async () => {
         Authorization: `Bearer ${token}`
     })
     .send({
+        name: '',
         amount: 5000,
         date: '2057/11/11'
     })
@@ -96,6 +97,3 @@ it("should throw 201 and should have data if data created successfull", async ()
     .expect(201)
     expect(res.body.data).toBeDefined()
 });
-
-
-

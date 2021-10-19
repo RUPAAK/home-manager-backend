@@ -16,7 +16,7 @@ declare global {
 
 // jest.mock("../services/facebook.ts");
 
-jest.setTimeout(100000);
+jest.setTimeout(500000);
 
 let mongo: any;
 beforeAll(async () => {
