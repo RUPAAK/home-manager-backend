@@ -133,7 +133,7 @@ it("should throw if bank amount is less than transistion", async () => {
     .expect(400);
 });
 
-it("should deduct amount from bank afet sucessful transistion creation", async () => {
+it("should deduct amount from bank after sucessful transistion creation", async () => {
   const token = await global.signin();
 
   const res = await request(app)
@@ -159,13 +159,13 @@ it("should deduct amount from bank afet sucessful transistion creation", async (
       date: "2057/11/11",
       bank: res.body.data.id,
     })
-    .expect(200);
+    .expect(201);
 
   const thatBank = await Bank.findById(res.body.data.id);
   expect(thatBank!.amount).toEqual(4000);
 });
 
-it("should sucessfully create transision  ", async () => {
+it("should sucessfully create transistion  ", async () => {
   const token = await global.signin();
 
   const res = await request(app)
@@ -191,7 +191,7 @@ it("should sucessfully create transision  ", async () => {
       date: "2057/11/11",
       bank: res.body.data.id,
     })
-    .expect(200);
+    .expect(201);
 
   expect(res2.body.data).toBeDefined();
 });

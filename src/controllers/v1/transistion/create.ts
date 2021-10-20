@@ -17,7 +17,7 @@ const createTransistion = async (req: Request, res: Response) => {
 
     await thisBank!.save()
 
-    res.status(200).send({
+    res.status(201).send({
         data: createdTransistion
     })
 };
