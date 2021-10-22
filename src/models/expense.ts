@@ -8,7 +8,8 @@ interface ExpenseAttrs {
   name: string;
   amount: number;
   date?: string;
-  user: string,
+  user: string;
+  active?: boolean;
 }
 
 // An interface that describes the properties
@@ -21,9 +22,10 @@ interface ExpenseDoc extends mongoose.Document, ExpenseAttrs {
   name: string;
   amount: number;
   date: string;
-  user: string,
+  user: string;
   createdAt: Date;
   updatedAt: Date;
+  active: boolean;
 }
 
 const expenseSchema = new mongoose.Schema<ExpenseDoc>(
@@ -40,11 +42,15 @@ const expenseSchema = new mongoose.Schema<ExpenseDoc>(
       type: String,
       required: true,
     },
-    user:{
+    user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    }
+      ref: "User",
+      required: true,
+    },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: {

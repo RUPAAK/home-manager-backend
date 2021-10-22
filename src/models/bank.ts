@@ -6,6 +6,7 @@ interface BankAttrs {
   date: string;
   interest?: string;
   user: string;
+  active?: boolean;
 }
 
 interface BankModel extends mongoose.Model<BankDoc> {
@@ -18,6 +19,7 @@ interface BankDoc extends mongoose.Document, BankAttrs {
   date: string;
   interest: string;
   user: string;
+  active: boolean;
 }
 
 const bankSchema = new mongoose.Schema<BankDoc>(
@@ -42,6 +44,10 @@ const bankSchema = new mongoose.Schema<BankDoc>(
     interest: {
       type: String,
     },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: {
@@ -61,9 +67,6 @@ bankSchema.statics.build = (attrs: BankAttrs) => {
   return new Bank(attrs);
 };
 
-const Bank = mongoose.model<BankDoc, BankModel>(
-  "Bank",
-  bankSchema
-);
+const Bank = mongoose.model<BankDoc, BankModel>("Bank", bankSchema);
 
 export { Bank };

@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import mongoose from "mongoose";
-import {Role } from "../common/types/auth_types";
+import { Role } from "../common/types/auth_types";
 import { Password } from "../services/password";
 
 // An interface that describes the properties
@@ -10,6 +10,7 @@ interface UserAttrs {
   password?: string;
   name: string;
   role?: Role;
+  active?: boolean;
 }
 
 // An interface that describes the properties
@@ -23,9 +24,10 @@ interface UserDoc extends mongoose.Document, UserAttrs {
   email: string;
   password: string;
   role: Role;
-  lastLoggedIn: Date,
+  lastLoggedIn: Date;
   createdAt: Date;
   updatedAt: Date;
+  active: boolean;
 }
 
 const userSchema = new mongoose.Schema<UserDoc>(
@@ -45,16 +47,16 @@ const userSchema = new mongoose.Schema<UserDoc>(
     },
     role: {
       type: String,
-      enum: [
-        Role.User,
-        Role.SuperAdmin,
-        Role.Admin,
-      ],
+      enum: [Role.User, Role.SuperAdmin, Role.Admin],
       default: Role.User,
     },
-    lastLoggedIn:{
-      type: Date
-    }
+    lastLoggedIn: {
+      type: Date,
+    },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: {
@@ -69,7 +71,6 @@ const userSchema = new mongoose.Schema<UserDoc>(
   }
 );
 
-
 userSchema.pre("save", async function (done) {
   if (this.isModified("password")) {
     const hashed = await Password.toHash(this.get("password"));
@@ -81,7 +82,6 @@ userSchema.pre("save", async function (done) {
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
-
 
 const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
 

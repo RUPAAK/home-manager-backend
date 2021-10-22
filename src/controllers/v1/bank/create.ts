@@ -1,4 +1,3 @@
-import { create } from 'domain'
 import {Request, Response} from 'express'
 import { BadRequestError } from '../../../common'
 import {Bank} from '../../../models/bank'

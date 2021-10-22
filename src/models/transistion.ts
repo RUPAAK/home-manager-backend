@@ -8,8 +8,9 @@ interface TransistionAttrs {
   name: string;
   amount: number;
   date?: string;
-  user: string,
-  bank: string
+  user: string;
+  bank: string;
+  active?: boolean;
 }
 
 // An interface that describes the properties
@@ -22,10 +23,11 @@ interface TransistionDoc extends mongoose.Document, TransistionAttrs {
   name: string;
   amount: number;
   date: string;
-  user: string,
-  bank: string
+  user: string;
+  bank: string;
   createdAt: Date;
   updatedAt: Date;
+  active: boolean;
 }
 
 const transistionSchema = new mongoose.Schema<TransistionDoc>(
@@ -47,11 +49,15 @@ const transistionSchema = new mongoose.Schema<TransistionDoc>(
       type: String,
       required: true,
     },
-    user:{
+    user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    }
+      ref: "User",
+      required: true,
+    },
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     toJSON: {
