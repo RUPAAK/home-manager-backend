@@ -1,17 +1,18 @@
 import {Request, Response} from 'express'
 import { BadRequestError } from '../../../common'
-import {Bank} from '../../../models/bank'
+import { Bank } from '../../../models/bank'
 
-const createBankTrans= async(req: Request, res: Response)=>{
-    const {name, amount, interest, date}= req.body
-    const bankTrans= Bank.build({name, amount, interest, date, user: req.currentUser!.id})
-    const createdBankTrans= await bankTrans.save();
+const createBank= async(req: Request, res: Response)=>{
+    const {name, interest} = await req.body
 
-    if(!createdBankTrans) throw new BadRequestError('Error: Creating Bank Record')
-    res.status(201).send({
-        data: createdBankTrans
-    })
+    const existBank= await Bank.findOne({name})
+    if(existBank) throw new BadRequestError('Bank already exist')
+
+    const bank= await Bank.build({name, interest}).save()
     
+    res.status(201).send({
+        data: bank
+    })
 }
 
-export {createBankTrans as createBankTransHandler}
+export {createBank as createBankHandler}

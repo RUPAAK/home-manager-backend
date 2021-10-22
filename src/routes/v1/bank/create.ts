@@ -1,21 +1,9 @@
-import express from "express";
-import { body } from "express-validator";
-import { currentUser, requireAuth, validateRequest } from "../../../common";
-import { createBankTransHandler } from "../../../controllers/v1/bank/create";
+import express from 'express'
+import { currentUser, requireAuth, validateRequest } from '../../../common'
+import { createBankHandler } from '../../../controllers/v1/bank/create'
 
-const router = express.Router();
+const router= express.Router()
 
-router.post(
-  "/",
-  currentUser,
-  requireAuth,
-  [
-    body("name").notEmpty().withMessage("Bank name must be provided"),
-    body("amount").notEmpty().withMessage("Amount must be valid"),
-    body("date").notEmpty().withMessage("Date must be valid"),
-  ],
-  validateRequest,
-  createBankTransHandler
-);
+router.post('/', currentUser, requireAuth, validateRequest, createBankHandler)
 
-export { router as createBankTransRouter };
+export {router as createBankRouter}

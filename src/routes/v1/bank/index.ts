@@ -1,10 +1,8 @@
 import express from 'express'
-import { createBankTransRouter } from './create'
-import { getBanksRouter } from './get'
+import { createBankRouter } from './create'
 
 const router= express.Router()
 
-router.use(createBankTransRouter)
-router.use(getBanksRouter)
+router.use(createBankRouter)
 
-export {router as indexBankTransRouter}
+export {router as indexBankRouter}

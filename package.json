@@ -7,9 +7,10 @@
     "start": "node build/server.js",
     "watchtest": "jest --watchAll",
     "coverage": "jest --collect-coverage",
-    "postinstall": "npm run build-ts",
-    "build-ts": "tsc -p tsconfig.json",
-    "test": "jest --ci"
+    "postinstall": "npm run tsc",
+    "tsc": "tsc -p tsconfig.json",
+    "test": "jest --ci",
+    "single": "jest bank/create.test.ts"
   },
   "keywords": [],
   "author": "",
