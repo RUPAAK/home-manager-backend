@@ -1,9 +1,20 @@
-import express from 'express'
-import { currentUser, requireAuth, validateRequest } from '../../../common'
-import { createBankHandler } from '../../../controllers/v1/bank/create'
+import express from "express";
+import { body } from "express-validator";
+import { currentUser, requireAuth, validateRequest } from "../../../common";
+import { createBankHandler } from "../../../controllers/v1/bank/create";
 
-const router= express.Router()
+const router = express.Router();
 
-router.post('/', currentUser, requireAuth, validateRequest, createBankHandler)
+router.post(
+  "/",
+  currentUser,
+  requireAuth,
+  [
+    body("name").notEmpty().withMessage("Name must be provided"),
+    body("interest").notEmpty().withMessage("Interest must be provided"),
+  ],
+  validateRequest,
+  createBankHandler
+);
 
-export {router as createBankRouter}
+export { router as createBankRouter };

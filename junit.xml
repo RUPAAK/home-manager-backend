@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="6.633">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-22T17:14:21" time="6.521" tests="5">
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="5.228">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-22T17:17:32" time="5.139" tests="7">
     <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.049">
     </testcase>
     <testcase classname=" should throw 401 error if token isnot provided" name=" should throw 401 error if token isnot provided" time="0.022">
     </testcase>
-    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.009">
+    <testcase classname=" should throw 400 if name isn&apos;t provided" name=" should throw 400 if name isn&apos;t provided" time="0.165">
     </testcase>
-    <testcase classname=" should throw 400 if bank of the name alerady exist" name=" should throw 400 if bank of the name alerady exist" time="0.15">
+    <testcase classname=" should throw 400 if interest isn&apos;t provided" name=" should throw 400 if interest isn&apos;t provided" time="0.091">
     </testcase>
-    <testcase classname=" should return name and interest of bank after creation" name=" should return name and interest of bank after creation" time="0.098">
+    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.008">
+    </testcase>
+    <testcase classname=" should throw 400 if bank of the name alerady exist" name=" should throw 400 if bank of the name alerady exist" time="0.1">
+    </testcase>
+    <testcase classname=" should return name and interest of bank after creation" name=" should return name and interest of bank after creation" time="0.086">
     </testcase>
   </testsuite>
 </testsuites>

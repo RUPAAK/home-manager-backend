@@ -11,6 +11,32 @@ it("should throw 401 error if token isnot provided", async () => {
   await request(app).post("/api/v1/banks").send({}).expect(401);
 });
 
+it("should throw 400 if name isn't provided", async () => {
+  const token = await global.signin();
+  const res = await request(app)
+    .post("/api/v1/banks")
+    .set({
+      Authorization: `Bearer ${token}`,
+    })
+    .send({
+      interest: "5%",
+    })
+    .expect(400);
+});
+
+it("should throw 400 if interest isn't provided", async () => {
+  const token = await global.signin();
+  const res = await request(app)
+    .post("/api/v1/banks")
+    .set({
+      Authorization: `Bearer ${token}`,
+    })
+    .send({
+      name: "test",
+    })
+    .expect(400);
+});
+
 it("should throw 401 error if token is invalid", async () => {
   await request(app)
     .post("/api/v1/banks")
