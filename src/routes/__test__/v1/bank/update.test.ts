@@ -79,7 +79,6 @@ it("should return updated active status", async () => {
     .send({
       name: "test",
       interest: "5%",
-      active: false
     })
     .expect(201);
   const res2 = await request(app)
@@ -89,10 +88,10 @@ it("should return updated active status", async () => {
     })
     .send({
       name: "updated",
-      active: true,
+      active: false,
     })
     .expect(200);
 
-    expect(res2.body.data.active).toBeTruthy();
+    expect(res2.body.data.active).not.toBeTruthy();
 
 });

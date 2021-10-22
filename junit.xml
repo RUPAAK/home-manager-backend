@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="6" failures="0" errors="0" time="8.815">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-22T17:58:01" time="8.725" tests="6">
-    <testcase classname=" should not throw 404 while calling create endpoint" name=" should not throw 404 while calling create endpoint" time="0.051">
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="16.756">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-10-22T18:21:04" time="15.806" tests="5">
+    <testcase classname=" should not throw 404 while calling get endpoint" name=" should not throw 404 while calling get endpoint" time="0.029">
     </testcase>
-    <testcase classname=" should throw 401 error if token isnot provided" name=" should throw 401 error if token isnot provided" time="0.016">
+    <testcase classname=" should not throw 401 not authorized if token invalid" name=" should not throw 401 not authorized if token invalid" time="0.018">
     </testcase>
-    <testcase classname=" should throw 401 error if token is invalid" name=" should throw 401 error if token is invalid" time="0.011">
+    <testcase classname=" should throw data while calling get endpoint" name=" should throw data while calling get endpoint" time="0.238">
     </testcase>
-    <testcase classname=" should throw 400 if bank of that id not found" name=" should throw 400 if bank of that id not found" time="0.135">
+    <testcase classname=" should return results and total and both should be number" name=" should return results and total and both should be number" time="0.196">
     </testcase>
-    <testcase classname=" should return updated name and interest" name=" should return updated name and interest" time="0.103">
-    </testcase>
-    <testcase classname=" should return updated active status" name=" should return updated active status" time="0.097">
+    <testcase classname=" should return exact limit data provided in query" name=" should return exact limit data provided in query" time="0.108">
     </testcase>
   </testsuite>
 </testsuites>
