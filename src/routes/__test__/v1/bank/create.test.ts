@@ -88,3 +88,18 @@ it("should return name and interest of bank after creation", async () => {
   expect(res.body.data.name).toEqual("test");
   expect(res.body.data.interest).toEqual("5%");
 });
+
+it("should return bankt and active true", async () => {
+  const token = await global.signin();
+  const res = await request(app)
+    .post("/api/v1/banks")
+    .set({
+      Authorization: `Bearer ${token}`,
+    })
+    .send({
+      name: "test",
+      interest: "5%",
+    })
+    .expect(201);
+  expect(res.body.data.active).toBeTruthy()
+});

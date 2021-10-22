@@ -63,10 +63,36 @@ it("should return updated name and interest", async () => {
     })
     .expect(200);
 
-    expect(res2.body.data.name).toBeDefined()
-    expect(res2.body.data.interest).toBeDefined()
-    expect(res2.body.data.name).toEqual('test2')
-    expect(res2.body.data.interest).toEqual('10%')
+  expect(res2.body.data.name).toBeDefined();
+  expect(res2.body.data.interest).toBeDefined();
+  expect(res2.body.data.name).toEqual("test2");
+  expect(res2.body.data.interest).toEqual("10%");
+});
 
+it("should return updated active status", async () => {
+  const token = await global.signin();
+  const res = await request(app)
+    .post("/api/v1/banks")
+    .set({
+      Authorization: `Bearer ${token}`,
+    })
+    .send({
+      name: "test",
+      interest: "5%",
+      active: false
+    })
+    .expect(201);
+  const res2 = await request(app)
+    .patch(`/api/v1/banks/${res.body.data.id}`)
+    .set({
+      Authorization: `Bearer ${token}`,
+    })
+    .send({
+      name: "updated",
+      active: true,
+    })
+    .expect(200);
+
+    expect(res2.body.data.active).toBeTruthy();
 
 });
