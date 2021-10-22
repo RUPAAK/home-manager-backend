@@ -10,7 +10,7 @@
     "postinstall": "npm run tsc",
     "tsc": "tsc -p tsconfig.json",
     "test": "jest --ci",
-    "single": "jest bank/get.test.ts"
+    "single": "jest bank/get-one.test.ts"
   },
   "keywords": [],
   "author": "",

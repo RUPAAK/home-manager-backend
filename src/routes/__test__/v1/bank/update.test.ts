@@ -92,6 +92,5 @@ it("should return updated active status", async () => {
     })
     .expect(200);
 
-    expect(res2.body.data.active).not.toBeTruthy();
-
+  expect(res2.body.data.active).not.toBeTruthy();
 });
