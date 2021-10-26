@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 interface BankAttrs {
   name: string;
+  amount: number;
   interest?: string;
   active?: boolean;
 }
@@ -12,6 +13,7 @@ interface BankModel extends mongoose.Model<BankDoc> {
 
 interface BankDoc extends mongoose.Document, BankAttrs {
   name: string;
+  amount: number;
   interest: string;
   active: boolean;
 }
@@ -20,6 +22,10 @@ const bankSchema = new mongoose.Schema<BankDoc>(
   {
     name: {
       type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
       required: true,
     },
     interest: {

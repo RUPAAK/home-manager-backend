@@ -19,6 +19,20 @@ it("should throw 400 if name isn't provided", async () => {
       Authorization: `Bearer ${token}`,
     })
     .send({
+      amount: 5000,
+      interest: "5%",
+    })
+    .expect(400);
+});
+it("should throw 400 if amount isn't provided", async () => {
+  const token = await global.signin();
+  const res = await request(app)
+    .post("/api/v1/banks")
+    .set({
+      Authorization: `Bearer ${token}`,
+    })
+    .send({
+      name: "test",
       interest: "5%",
     })
     .expect(400);
@@ -33,6 +47,7 @@ it("should throw 400 if interest isn't provided", async () => {
     })
     .send({
       name: "test",
+      amount: 5000,
     })
     .expect(400);
 });
@@ -56,6 +71,7 @@ it("should throw 400 if bank of the name alerady exist", async () => {
     })
     .send({
       name: "test",
+      amount: 5000,
       interest: "5%",
     })
     .expect(201);
@@ -66,6 +82,7 @@ it("should throw 400 if bank of the name alerady exist", async () => {
     })
     .send({
       name: res.body.data.name,
+      amount: 5000,
       interest: "5%",
     })
     .expect(400);
@@ -80,6 +97,7 @@ it("should return name and interest of bank after creation", async () => {
     })
     .send({
       name: "test",
+      amount: 5000,
       interest: "5%",
     })
     .expect(201);
@@ -87,6 +105,7 @@ it("should return name and interest of bank after creation", async () => {
   expect(res.body.data.interest).toBeDefined();
   expect(res.body.data.name).toEqual("test");
   expect(res.body.data.interest).toEqual("5%");
+  expect(res.body.data.amount).toEqual(5000);
 });
 
 it("should return bank and active true", async () => {
@@ -98,8 +117,9 @@ it("should return bank and active true", async () => {
     })
     .send({
       name: "test",
+      amount: 5000,
       interest: "5%",
     })
     .expect(201);
-  expect(res.body.data.active).toBeTruthy()
+  expect(res.body.data.active).toBeTruthy();
 });

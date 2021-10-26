@@ -11,6 +11,7 @@ router.post(
   requireAuth,
   [
     body("name").notEmpty().withMessage("Name must be provided"),
+    body("amount").notEmpty().withMessage("Amount must be provided"),
     body("interest").notEmpty().withMessage("Interest must be provided"),
   ],
   validateRequest,

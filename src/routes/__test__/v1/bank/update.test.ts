@@ -35,6 +35,7 @@ it("should throw 400 if bank of that id not found", async () => {
     })
     .send({
       name: "test",
+      amount: 2000,
       interest: "5%",
     })
     .expect(400);
@@ -49,6 +50,7 @@ it("should return updated name and interest", async () => {
     })
     .send({
       name: "test",
+      amount: 5000,
       interest: "5%",
     })
     .expect(201);
@@ -78,6 +80,7 @@ it("should return updated active status", async () => {
     })
     .send({
       name: "test",
+      amount: 5000,
       interest: "5%",
     })
     .expect(201);
