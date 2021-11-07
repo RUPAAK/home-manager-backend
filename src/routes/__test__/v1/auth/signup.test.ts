@@ -1,71 +1,126 @@
 import request from "supertest";
 import { app } from "../../../../app";
-import { User } from "../../../../models/user";
+import { Role, RoleType } from "../../../../models/role";
 import "../../../../test/setup";
+import jwt from "jsonwebtoken";
 
-it('should not throw 404 when hitting signup endpoint', async()=>{
-    const res = await request(app).post("/api/v1/auth/signup").send({});
-    expect(res.status).not.toEqual(404)
-})
+it("should not throw 404 while calling signup endpoint", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({});
+  expect(res.status).not.toEqual(404);
+});
 
-it('should throw 400 status when name is empty', async()=>{
-    await request(app).post("/api/v1/auth/signup").send({
-        email: "teet@gmail.com",
-        password: "test"
-    }).expect(400)
-})
+it("should throw 400 when name is missing", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    email: "test@gmail.com",
+    password: "thisistest",
+  });
+  expect(400);
+});
 
-it('should throw 400 status when email is empty', async()=>{
-    await request(app).post("/api/v1/auth/signup").send({
-        name: "test",
-        password: "test"
-    }).expect(400)
-})
+it("should throw 400 when email is missing", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    password: "thisistest",
+  });
+  expect(400);
+});
 
-it('should throw 400 status when email is invalid', async()=>{
-    await request(app).post("/api/v1/auth/signup").send({
-        name: "teet",
-        emaiL: "test@",
-        password: "test"
-    }).expect(400)
-})
+it("should throw 400 when password is missing", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@gmail.com",
+  });
+  expect(400);
+});
 
-it('should throw 400 status when password is empty', async()=>{
-    await request(app).post("/api/v1/auth/signup").send({
-        email: "teet@gmail.com",
-        name: "test"
-    }).expect(400)
-})
+it("should throw 400 when valid email is not provided", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "jptemail",
+    password: "thisistest",
+  });
+  expect(400);
+});
 
-it('should throw 400 status when email is already taken', async()=>{
-    await request(app).post("/api/v1/auth/signup").send({
-        name: "test",
-        email: "teet@gmail.com",
-        password: "test"
-    }).expect(201)
+it("should throw 400 when valid password is less than 6", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "jptemail",
+    password: "four",
+  });
+  expect(400);
+});
 
-    await request(app).post("/api/v1/auth/signup").send({
-        name: "test",
-        email: "teet@gmail.com",
-        password: "test"
-    }).expect(400)
-})
+it("should throw 400 when valid password is less than 20", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "jptemail",
+    password: "123456789987654321452542",
+  });
+  expect(400);
+});
 
-it('password should be hashed when signup', async()=>{
-    const res= await request(app).post("/api/v1/auth/signup").send({
-        name: "test",
-        email: "teet@gmail.com",
-        password: "test"
-    }).expect(201)
-    const createdUser= await User.findById(res.body.data.id)
-    expect(createdUser!.password).not.toEqual("test")
-})
+it("should throw 400 if email already in use", async () => {
+  await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@email.com",
+    password: "testtest",
+  });
+  expect(201);
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@email.com",
+    password: "testtest",
+  });
+  expect(400);
+});
 
-it('should throw 201 status when  user created succesfully', async()=>{
-    const res= await request(app).post("/api/v1/auth/signup").send({
-        name: "test",
-        email: "teet@gmail.com",
-        password: "test"
-    }).expect(201)
-    expect(res.body.data).toBeDefined()
-})
+it("user should contain valid role i.e role from database", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@email.com",
+    password: "testtest",
+  });
+  expect(201);
+
+  const role = await Role.findOne({ name: RoleType.user });
+});
+
+it("user email should not be verified if created normally", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@email.com",
+    password: "testtest",
+  });
+  expect(201);
+
+  expect(res.body.data.emailVerified).toBeFalsy();
+});
+
+it("accessToken should be returned", async () => {
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@email.com",
+    password: "testtest",
+  });
+  expect(201);
+
+  expect(res.body.accessToken).toBeDefined();
+});
+
+it("accessToken decoded should contain id and email of that user", async () => {
+  interface JWT {
+    id: string;
+    email: string;
+  }
+  const res = await request(app).post("/api/v1/auth/signup").send({
+    name: "Test_Name",
+    email: "test@email.com",
+    password: "testtest",
+  });
+  expect(201);
+
+  const decoded = await jwt.decode(res.body.accessToken);
+  expect(res.body.data.id).toEqual((decoded as unknown as JWT).id);
+  expect(res.body.data.email).toEqual((decoded as unknown as JWT).email);
+});

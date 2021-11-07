@@ -1,15 +1,16 @@
 import crypto from "crypto";
 import mongoose from "mongoose";
-import { Role } from "../common/types/auth_types";
 import { Password } from "../services/password";
+import { RoleType } from "./role";
 
 // An interface that describes the properties
 // that are requried to create a new User
 interface UserAttrs {
   email: string;
+  emailVerified?: boolean;
   password?: string;
   name: string;
-  role?: Role;
+  role: RoleType;
   active?: boolean;
 }
 
@@ -19,12 +20,13 @@ interface UserModel extends mongoose.Model<UserDoc> {
   build(attrs: UserAttrs): UserDoc;
 }
 
-interface UserDoc extends mongoose.Document, UserAttrs {
+export interface UserDoc extends mongoose.Document, UserAttrs {
   name: string;
   email: string;
+  emailVerified: boolean;
   password: string;
   photoUrl: string;
-  role: Role;
+  role: RoleType;
   lastLoggedIn: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -43,6 +45,10 @@ const userSchema = new mongoose.Schema<UserDoc>(
       unique: true,
       lowercase: true,
     },
+    emailVerified: {
+      type: Boolean,
+      default: false,
+    },
     photoUrl: {
       type: String,
       default:
@@ -53,7 +59,7 @@ const userSchema = new mongoose.Schema<UserDoc>(
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Role",
     },
     lastLoggedIn: {
       type: Date,

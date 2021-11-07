@@ -2,6 +2,7 @@ import { NotAuthorizedError } from "./../errors/not-authorized-error";
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { promisify } from "util";
+import { UserDoc } from "../../models/user";
 
 interface UserPayload {
   id: string;
@@ -13,6 +14,9 @@ declare global {
   namespace Express {
     interface Request {
       currentUser?: UserPayload;
+      userData?: UserDoc;
+      limitedField?: string[];
+      isUser?: boolean;
     }
   }
 }

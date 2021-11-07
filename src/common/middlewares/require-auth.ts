@@ -18,7 +18,7 @@ export const requireAuth = async (
     throw new NotAuthorizedError();
   }
 
-
+  req.userData = existUserData;
 
   next();
 };

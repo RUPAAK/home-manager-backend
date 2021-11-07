@@ -1,27 +1,26 @@
 import mongoose from "mongoose";
 
-/**
- * TOTAL ROLE TYPE OF THE APP
- */
+// *TOTAL ROLE TYPE OF THE APP
+
 export enum RoleType {
   user = "user",
   admin = "admin",
   superadmin = "superadmin",
 }
 
-/**
- * INTERFACE THAT DEFINES FIELDS TO CREATE TOLE
- */
+// * INTERFACE THAT DEFINES FIELDS TO CREATE TOLE
 
 export interface RoleAttrs {
   name?: string;
-  resources?: [name: string, access: string[]];
-  limitedField?: string[];
+  resources: {
+    name: string;
+    access: string[];
+    limitedField?: string[];
+    isUser: boolean;
+  }[];
 }
 
-/**
- * INTERFACE THAT DEFINES FIELDS A ROLE INSTANCE HAVE
- */
+// * INTERFACE THAT DEFINES FIELDS A ROLE INSTANCE HAVE
 
 interface RoleModel extends mongoose.Model<RoleDoc> {
   build(attrs: RoleAttrs): RoleDoc;
@@ -29,8 +28,12 @@ interface RoleModel extends mongoose.Model<RoleDoc> {
 
 interface RoleDoc extends mongoose.Document, RoleAttrs {
   name: string;
-  resources: [name: string, access: string[]];
-  limitedField: string[];
+  resources: {
+    name: string;
+    access: string[];
+    limitedField: string[];
+    isUser: boolean;
+  }[];
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -46,13 +49,17 @@ const roleSchema = new mongoose.Schema<RoleDoc>(
       {
         name: String,
         access: [String],
+        limitedField: [
+          {
+            type: String,
+          },
+        ],
+        isUser: {
+          type: Boolean,
+        },
       },
     ],
-    limitedField: [
-      {
-        type: String,
-      },
-    ],
+
     active: {
       type: Boolean,
       default: true,

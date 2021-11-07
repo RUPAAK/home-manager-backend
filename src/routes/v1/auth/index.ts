@@ -1,14 +1,10 @@
-import express from "express";
-import { errorHandler } from "../../../common";
+// * EXPORT EVERY AUTH ROUTES FROM INDEX
 
-import { signinRouter } from "./signin";
+import express from "express";
 import { signupRouter } from "./signup";
 
 const router = express.Router();
 
-router.use(signinRouter);
-router.use(signupRouter)
-
-router.use(errorHandler);
+router.use(signupRouter);
 
 export { router as indexAuthRouter };

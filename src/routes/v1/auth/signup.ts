@@ -1,22 +1,23 @@
+// * ROUTES FOR SIGNUP
+
 import express from "express";
 import { body } from "express-validator";
 import { validateRequest } from "../../../common";
-import { Request, Response } from "express";
 import { signupHandler } from "../../../controllers/v1/auth/signup";
 
 const router = express.Router();
 
-router.post(
+router.use(
   "/signup",
   [
-    body("name").notEmpty().withMessage("Name must be provided"),
-    body("email").notEmpty().isEmail().withMessage("Email must be valid"),
+    body("name").notEmpty().withMessage("Name is required"),
+    body("email").isEmail().notEmpty().withMessage("Valid Email is required"),
     body("password")
       .notEmpty()
-      .withMessage("You must supply a password"),
+      .isLength({ min: 6, max: 20 })
+      .withMessage("Valid Password is required"),
   ],
   validateRequest,
-
   signupHandler
 );
 

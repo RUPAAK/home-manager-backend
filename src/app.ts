@@ -4,8 +4,9 @@ import cors from "cors";
 import "express-async-errors";
 import { json } from "body-parser";
 
-import { indexAuthRouter } from "./routes/v1/auth";
 import { errorHandler, NotFoundError } from "./common";
+import { indexAuthRouter } from "./routes/v1/auth";
+import { Role } from "./models/role";
 
 const app = express();
 app.set("trust proxy", true);
@@ -23,6 +24,8 @@ app.all("*", (req, res) => {
   throw new NotFoundError();
 });
 
+
 app.use(errorHandler);
+// app.use(NotFoundError);
 
 export { app };

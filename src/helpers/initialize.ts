@@ -65,6 +65,7 @@ const initialize = async () => {
         name: "Super Admin",
         email: process.env.SUPERADMIN_EMAIL!,
         password: process.env.SUPERADMIN_PASSWORD,
+        emailVerified: true,
         role: adminRoleId,
       });
 

@@ -2,7 +2,7 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 import request from "supertest";
 import { app } from "../app";
-import { Role } from "../common/types/auth_types";
+import { RoleType } from "../models/role";
 import { User } from "../models/user";
 
 declare global {
@@ -62,7 +62,7 @@ global.signin = async () => {
     })
     .expect(201);
 
-  await User.findByIdAndUpdate(response.body.data.id, { role: Role.User });
+  await User.findByIdAndUpdate(response.body.data.id, { role: RoleType.user });
 
   const accessToken = response.body.accessToken;
 
@@ -83,7 +83,7 @@ global.signinAdmin = async () => {
     })
     .expect(201);
 
-  await User.findByIdAndUpdate(response.body.data.id, { role: Role.Admin });
+  await User.findByIdAndUpdate(response.body.data.id, { role: RoleType.user });
 
   const accessToken = response.body.accessToken;
 
