@@ -8,6 +8,7 @@
     "watchtest": "jest --watchAll",
     "coverage": "jest --collect-coverage",
     "postinstall": "npm run tsc",
+    "server": "ts-node-dev --poll src/server.ts",
     "tsc": "tsc -p tsconfig.json",
     "test": "jest --ci",
     "single": "jest bank/update.test.ts"

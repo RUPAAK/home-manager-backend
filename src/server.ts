@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { app } from "./app";
+import { initialize } from "./helpers/initialize";
 
 process.on("uncaughtException", (err) => {
   console.log("UNCAUGHT EXCEPTION! Sutting down.....");
@@ -12,7 +13,7 @@ dotenv.config();
 
 const server = require("http").createServer(app);
 
-const DB= process.env.MONGO_URL!
+const DB = process.env.MONGO_URL!;
 
 mongoose
   .connect(DB, {
@@ -23,9 +24,10 @@ mongoose
   })
   .then(() => console.log("CONNECTION TO DATABASE SUCCESSFUL"));
 
+initialize();
+
 const port = process.env.PORT || 5000;
 
 server.listen(port, () => {
   console.log(`App is Listening on Port ${port}`);
 });
-

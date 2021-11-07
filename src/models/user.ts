@@ -23,6 +23,7 @@ interface UserDoc extends mongoose.Document, UserAttrs {
   name: string;
   email: string;
   password: string;
+  photoUrl: string;
   role: Role;
   lastLoggedIn: Date;
   createdAt: Date;
@@ -42,13 +43,17 @@ const userSchema = new mongoose.Schema<UserDoc>(
       unique: true,
       lowercase: true,
     },
+    photoUrl: {
+      type: String,
+      default:
+        "https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=",
+    },
     password: {
       type: String,
     },
     role: {
-      type: String,
-      enum: [Role.User, Role.SuperAdmin, Role.Admin],
-      default: Role.User,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
     lastLoggedIn: {
       type: Date,
