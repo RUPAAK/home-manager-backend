@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="12" failures="0" errors="0" time="8.213">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-11-07T15:38:19" time="8.106" tests="12">
-    <testcase classname=" should not throw 404 while calling signup endpoint" name=" should not throw 404 while calling signup endpoint" time="0.044">
+<testsuites name="jest tests" tests="12" failures="0" errors="0" time="10.015">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-11-07T15:39:13" time="9.939" tests="12">
+    <testcase classname=" should not throw 404 while calling signup endpoint" name=" should not throw 404 while calling signup endpoint" time="0.046">
     </testcase>
     <testcase classname=" should throw 400 when name is missing" name=" should throw 400 when name is missing" time="0.013">
     </testcase>
-    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.009">
+    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.008">
     </testcase>
-    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.008">
+    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.009">
     </testcase>
-    <testcase classname=" should throw 400 when valid email is not provided" name=" should throw 400 when valid email is not provided" time="0.009">
+    <testcase classname=" should throw 400 when valid email is not provided" name=" should throw 400 when valid email is not provided" time="0.006">
     </testcase>
-    <testcase classname=" should throw 400 when valid password is less than 6" name=" should throw 400 when valid password is less than 6" time="0.006">
+    <testcase classname=" should throw 400 when valid password is less than 6" name=" should throw 400 when valid password is less than 6" time="0.009">
     </testcase>
-    <testcase classname=" should throw 400 when valid password is less than 20" name=" should throw 400 when valid password is less than 20" time="0.008">
+    <testcase classname=" should throw 400 when valid password is less than 20" name=" should throw 400 when valid password is less than 20" time="0.006">
     </testcase>
-    <testcase classname=" should throw 400 if email already in use" name=" should throw 400 if email already in use" time="0.118">
+    <testcase classname=" should throw 400 if email already in use" name=" should throw 400 if email already in use" time="0.129">
     </testcase>
-    <testcase classname=" user should contain valid role i.e role from database" name=" user should contain valid role i.e role from database" time="0.086">
+    <testcase classname=" user should contain valid role i.e role from database" name=" user should contain valid role i.e role from database" time="0.089">
     </testcase>
-    <testcase classname=" user email should not be verified if created normally" name=" user email should not be verified if created normally" time="0.081">
+    <testcase classname=" user email should not be verified if created normally" name=" user email should not be verified if created normally" time="0.083">
     </testcase>
-    <testcase classname=" accessToken should be returned" name=" accessToken should be returned" time="0.083">
+    <testcase classname=" accessToken should be returned" name=" accessToken should be returned" time="0.08">
     </testcase>
-    <testcase classname=" accessToken decoded should contain id and email of that user" name=" accessToken decoded should contain id and email of that user" time="0.084">
+    <testcase classname=" accessToken decoded should contain id and email of that user" name=" accessToken decoded should contain id and email of that user" time="0.088">
     </testcase>
   </testsuite>
 </testsuites>
