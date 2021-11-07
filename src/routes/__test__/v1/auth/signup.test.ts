@@ -83,7 +83,9 @@ it("user should contain valid role i.e role from database", async () => {
   });
   expect(201);
 
-  const role = await Role.findOne({ name: RoleType.user });
+  const role = await Role.findById(res.body.data.role._id);
+  expect(role).toBeDefined();
+  expect(role).not.toBeNull();
 });
 
 it("user email should not be verified if created normally", async () => {

@@ -11,7 +11,7 @@
     "server": "ts-node-dev --poll src/server.ts",
     "tsc": "tsc -p tsconfig.json",
     "test": "jest --ci",
-    "single": "jest auth/signup.test.ts"
+    "single": "jest auth/signin.test.ts"
   },
   "keywords": [],
   "author": "",
