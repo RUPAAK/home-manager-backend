@@ -61,7 +61,7 @@ it("user should contain valid role i.e role from database", async () => {
       password: "testtest",
     })
     .expect(200);
-  const role = await Role.findById(res.body.data.role._id);
+  const role = await Role.findById(res.body.data.role.id);
   expect(role).toBeDefined();
   expect(role).not.toBeNull();
 });
