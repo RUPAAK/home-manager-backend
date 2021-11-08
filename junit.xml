@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="8" failures="0" errors="0" time="7.26">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-11-08T03:12:44" time="7.126" tests="8">
-    <testcase classname=" should not throw 404 while calling signin endpoint" name=" should not throw 404 while calling signin endpoint" time="0.043">
+<testsuites name="jest tests" tests="8" failures="0" errors="0" time="8.304">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-11-08T03:29:06" time="8.219" tests="8">
+    <testcase classname=" should not throw 404 while calling signin endpoint" name=" should not throw 404 while calling signin endpoint" time="0.048">
     </testcase>
-    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.009">
+    <testcase classname=" should throw 400 when email is missing" name=" should throw 400 when email is missing" time="0.01">
     </testcase>
-    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.011">
+    <testcase classname=" should throw 400 when password is missing" name=" should throw 400 when password is missing" time="0.013">
     </testcase>
-    <testcase classname=" should throw 400 if user isn&apos;t found" name=" should throw 400 if user isn&apos;t found" time="0.038">
+    <testcase classname=" should throw 400 if user isn&apos;t found" name=" should throw 400 if user isn&apos;t found" time="0.018">
     </testcase>
-    <testcase classname=" should throw 400 if password isn&apos;t matching" name=" should throw 400 if password isn&apos;t matching" time="0.128">
+    <testcase classname=" should throw 400 if password isn&apos;t matching" name=" should throw 400 if password isn&apos;t matching" time="0.115">
     </testcase>
-    <testcase classname=" user should contain valid role i.e role from database" name=" user should contain valid role i.e role from database" time="0.161">
+    <testcase classname=" user should contain valid role i.e role from database" name=" user should contain valid role i.e role from database" time="0.181">
     </testcase>
-    <testcase classname=" accessToken should be returned" name=" accessToken should be returned" time="0.151">
+    <testcase classname=" accessToken should be returned" name=" accessToken should be returned" time="0.17">
     </testcase>
-    <testcase classname=" accessToken decoded should contain id and email of that user" name=" accessToken decoded should contain id and email of that user" time="0.141">
+    <testcase classname=" accessToken decoded should contain id and email of that user" name=" accessToken decoded should contain id and email of that user" time="0.161">
     </testcase>
   </testsuite>
 </testsuites>
