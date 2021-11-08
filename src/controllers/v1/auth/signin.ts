@@ -15,6 +15,8 @@ const signin = async (req: Request, res: Response) => {
 
   const existUser = await User.findOne({ email }).populate("role");
 
+  if (!existUser) throw new BadRequestError("User not found");
+
   const passwordMatch = await Password.compare(existUser!.password, password);
 
   if (!passwordMatch) throw new BadRequestError("Invalid Credientials");
